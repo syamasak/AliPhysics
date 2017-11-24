@@ -78,6 +78,13 @@ if (NOT CMAKE_SYSTEM_NAME STREQUAL Windows)
   set(CMAKE_SHARED_LIBRARY_SUFFIX .so)
 endif (NOT CMAKE_SYSTEM_NAME STREQUAL Windows)
 
+# Add the automatically determined parts of the RPATH
+# which point to directories outside the build tree to the install RPATH
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+# Default library location (macOS)
+SET(CMAKE_INSTALL_RPATH "@loader_path/../lib")
+
 # Optional: Doxygen for reference doc generation
 find_package(Doxygen)
 if(DOXYGEN_FOUND AND DOXYGEN_DOT_FOUND)
